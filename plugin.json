@@ -1,0 +1,77 @@
+{
+  "id": "time",
+  "name": "Time",
+  "description": "Timers, intervals, focus, and breaks.",
+  "version": "1.0.0",
+  "platformApi": "^1.0.0",
+  "fieldSchemaApi": "^1.0.0",
+  "publisher": "taskasaur",
+  "license": "GPL-3.0-only",
+  "entrypoints": {
+    "browser": "browser.mjs",
+    "server": "server.mjs"
+  },
+  "ui": {
+    "mode": "shared",
+    "apiVersion": "^1.0.0",
+    "surfaces": ["time"]
+  },
+  "storage": {
+    "local": {
+      "mode": "dexie",
+      "collections": ["time"]
+    }
+  },
+  "permissions": ["time.read", "time.write"],
+  "dependencies": [],
+  "features": {},
+  "sharedServices": [
+    {
+      "id": "core.records",
+      "version": "^1",
+      "optional": false
+    },
+    {
+      "id": "core.ui",
+      "version": "^1",
+      "optional": false
+    },
+    {
+      "id": "core.workspace",
+      "version": "^1",
+      "optional": false
+    },
+    {
+      "id": "core.server",
+      "version": "^1",
+      "optional": false
+    },
+    {
+      "id": "core.sync",
+      "version": "^1",
+      "optional": false
+    },
+    {
+      "id": "core.storage.local",
+      "version": "^1",
+      "optional": false
+    }
+  ],
+  "provides": {
+    "commands": ["time.list", "time.put", "time.delete"],
+    "events": ["time.changed"]
+  },
+  "consumes": {
+    "commands": [
+      "notifications.list",
+      "notifications.put",
+      "notifications.delete"
+    ],
+    "events": []
+  },
+  "server": {
+    "routes": [],
+    "background": true,
+    "mutationHooks": true
+  }
+}

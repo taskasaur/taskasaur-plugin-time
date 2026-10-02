@@ -1,0 +1,101 @@
+[
+  {
+    "id": "time",
+    "pluginId": "time",
+    "name": "Time",
+    "version": 1,
+    "fields": [
+      {
+        "id": "title",
+        "label": "Activity",
+        "pgType": "text",
+        "required": true,
+        "nullable": false,
+        "array": false,
+        "sensitive": false
+      },
+      {
+        "id": "started_at",
+        "label": "Started",
+        "pgType": "timestamp with time zone",
+        "required": true,
+        "nullable": false,
+        "array": false,
+        "sensitive": false
+      },
+      {
+        "id": "ended_at",
+        "label": "Ended",
+        "pgType": "timestamp with time zone",
+        "required": false,
+        "nullable": true,
+        "array": false,
+        "sensitive": false
+      },
+      {
+        "id": "kind",
+        "label": "Kind",
+        "pgType": "text",
+        "required": true,
+        "nullable": false,
+        "array": false,
+        "choices": ["work", "break", "focus"],
+        "default": "work",
+        "control": "select",
+        "sensitive": false
+      },
+      {
+        "id": "task_id",
+        "label": "Task",
+        "pgType": "uuid",
+        "required": false,
+        "nullable": true,
+        "array": false,
+        "sensitive": false,
+        "reference": "tasks",
+        "control": "reference"
+      },
+      {
+        "id": "notes",
+        "label": "Notes",
+        "pgType": "text",
+        "required": false,
+        "nullable": true,
+        "array": false,
+        "control": "textarea",
+        "sensitive": false
+      },
+      {
+        "id": "paused_ms",
+        "label": "Paused milliseconds",
+        "pgType": "bigint",
+        "required": false,
+        "nullable": true,
+        "array": false,
+        "default": "0",
+        "sensitive": false
+      },
+      {
+        "id": "paused_at",
+        "label": "Paused at",
+        "pgType": "timestamp with time zone",
+        "required": false,
+        "nullable": true,
+        "array": false,
+        "sensitive": false
+      },
+      {
+        "id": "target_seconds",
+        "label": "Timer duration (seconds)",
+        "pgType": "integer",
+        "required": false,
+        "nullable": true,
+        "array": false,
+        "min": 1,
+        "max": 86400,
+        "sensitive": false
+      }
+    ],
+    "standard": "time-interval"
+  }
+]
